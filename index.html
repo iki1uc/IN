@@ -1,64 +1,17 @@
-<!DOCTYPE html>
-<html lang="de">
-<head>
-<meta charset="UTF-8">
-<title>IN · Portal</title>
-
-<style>
-body { background:#111; color:#0f0; font-family:Consolas; padding:20px; }
-h1 { color:#6f6; }
-.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:20px; }
-.cell { background:#222; padding:15px; border:1px solid #333; border-radius:6px; min-height:120px; }
-.title { font-weight:bold; margin-bottom:5px; }
-</style>
-</head>
-
-<body>
-
 <h1>IN · Portal</h1>
+
+<pre>
+CORE = IN
+READY = 94%
+STATUS = GRÜN
+ACHSE = Input-Achse
+ROLLE = Eingangspunkt für IO, OI, OUT, SCAN-HUB
+</pre>
+
 <div class="grid" id="grid"></div>
 
-<script>
-const chain = [
-  { name:"IN ROOT", url:"https://iki1uc.github.io/IN/" },
-  { name:"IN ID", url:"https://iki1uc.github.io/IN/ID.html" },
-  { name:"IN TIME", url:"https://iki1uc.github.io/IN/time_3x11_scroll_zoom.html" }
-];
-
-const grid = document.getElementById("grid");
-
-chain.forEach((item,i)=>{
-  const cell=document.createElement("div");
-  cell.className="cell";
-  cell.id="slot"+i;
-  cell.innerHTML=`<div class="title">${item.name}</div>waiting…`;
-  grid.appendChild(cell);
-});
-
-async function scan(){
-  for(let i=0;i<chain.length;i++){
-    const slot=document.getElementById("slot"+i);
-    const item=chain[i];
-    try{
-      const res=await fetch(item.url);
-      slot.innerHTML=
-        `<div class="title">${item.name}</div>`+
-        `POS: ${i+1}<br>`+
-        `URL: ${item.url}<br>`+
-        (res.ok?"ONLINE ✓":"ERROR ✗")+` (${res.status})`;
-    }catch(err){
-      slot.innerHTML=
-        `<div class="title">${item.name}</div>`+
-        `POS: ${i+1}<br>`+
-        `URL: ${item.url}<br>`+
-        `EXCEPTION ✗<br>${err.message}`;
-    }
-  }
-}
-
-scan();
-setInterval(scan,3000);
-</script>
-
-</body>
-</html>
+<h2>Verbindungen</h2>
+<a href="../IO/index.html">IO – Router</a>
+<a href="../OI/index.html">OI – Hybrid</a>
+<a href="../OUT/index.html">OUT – Output</a>
+<a href="../SCAN-HUB/index.html">SCAN-HUB – Scanner</a>
