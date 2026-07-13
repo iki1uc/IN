@@ -1,17 +1,40 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>IN · Portal</title>
+<style>
+body { background:#000; color:#0f0; font-family:Consolas; padding:20px; }
+h1, h2 { color:#6cf; }
+pre { background:#111; border:1px solid #333; padding:12px; }
+a { color:#6cf; display:block; margin:10px 0; }
+.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+</style>
+</head>
+
+<body>
+
 <h1>IN · Portal</h1>
 
 <pre>
 CORE = IN
-READY = 94%
-STATUS = GRÜN
+KONSTELLATION = TMP
+FREQ = 12e
+6D = D0
+360° = Startpunkt
 ACHSE = Input-Achse
 ROLLE = Eingangspunkt für IO, OI, OUT, SCAN-HUB
+STATUS = Aktiv
+READY = 100%
 </pre>
-
-<div class="grid" id="grid"></div>
 
 <h2>Verbindungen</h2>
 <a href="../IO/index.html">IO – Router</a>
 <a href="../OI/index.html">OI – Hybrid</a>
 <a href="../OUT/index.html">OUT – Output</a>
 <a href="../SCAN-HUB/index.html">SCAN-HUB – Scanner</a>
+
+<div class="grid" id="grid"></div>
+
+</body>
+</html>
