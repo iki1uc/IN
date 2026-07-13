@@ -1,19 +1,18 @@
-# IN · Mini‑Portal (iki1uc System)
+# IN · Mini-Portal (iki1uc System)
 
-**IN** ist ein leichtes Modul im iki1uc‑Universum.  
-Es besteht aus drei Kernseiten:
+IN ist die Eingangsschicht des iki1uc-Systems.
 
-- **index.html** → Portal + Status‑Scan  
-- **ID.html** → ID‑Modul  
-- **time_3x11_scroll_zoom.html** → Zeit‑Modul (3×11)
+IN = D0  
+IN = ROOT  
+IN = Startpunkt  
+IN = Input-Achse  
+IN = IO-Cluster  
+IN = SCAN-HUB-Zugang  
+
+Alle Konstellationen = TMP  
+Alle Frequenzen = 12e  
+Alle Ebenen = 6D  
+Alle Sequenzen = 360°
 
 IN ist kompatibel mit:
-
-- ART.link  
-- TriAxiom  
-- MA³  
-- RAW‑SYS‑IKI‑AXI‑ATOR  
-- Respo‑Rotation  
-- Scan‑Ghost  
-
-IN ist ein *Mini‑System*, das als Baustein für größere Projekte dient.
+PIPE, SET, LaTER, LaTERpiFEKT, IO, OI, OUT, SCAN-HUB
