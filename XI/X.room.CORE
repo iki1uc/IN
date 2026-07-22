@@ -1,8 +1,18 @@
-X.room.CORE:
-  ID: <BUCHSTABE>
-  SIGNATUR: <NC-ZEICHEN>
-  FUNKTION: <NAVIGATION>
-  ACHSEN: 6e / x / y / t / h / b
-  ORBIT: q / u / i / o
-  EVO: QI / IQQ / upg / upd / rev
-  MATRIX: 3x3 → 9x9
+<script>
+window.addEventListener("message", (event) => {
+    const d = event.data;
+    if(!d || !d.FROM || !d.TO) return;
+
+    // Visuelle Bestätigung
+    document.body.style.border = "2px solid #6cf";
+
+    // Terminal-Ausgabe
+    console.log("MSG:", d);
+
+    // Ausgabe im UI (falls vorhanden)
+    const out = document.getElementById("station_out");
+    if(out){
+        out.innerHTML += `\nFROM: ${d.FROM} → TO: ${d.TO}`;
+    }
+});
+</script>
