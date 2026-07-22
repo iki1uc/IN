@@ -2,49 +2,58 @@
 <html lang="de">
 <head>
 <meta charset="UTF-8">
-<title>IN · Portal</title>
+<title>IN · RESPO Station</title>
 
 <style>
 body { background:#000; color:#0f0; font-family:Consolas; padding:20px; }
-h1, h2 { color:#6cf; }
+h1 { color:#6cf; }
 pre { background:#111; border:1px solid #333; padding:12px; }
-a { color:#6cf; display:block; margin:10px 0; }
-.grid { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
 </style>
 </head>
 
 <body>
 
-<h1>IN · Portal</h1>
+<h1>IN · RESPO Station</h1>
 
-<pre>
+<pre id="in_out">
 CORE        = IN
-VERSION     = 2.0
-LEVEL       = rot
+VERSION     = 1.2
 STATE       = rdy
+LEVEL       = rot
 READY       = 100%
-
-KONSTELLATION = TMP
-FREQ          = 12e
-6D            = D0
-360°          = Startpunkt
-
-ACHSE         = Input-Achse
-ROLLE         = Eingangspunkt für IO, OI, OUT, SCAN-HUB
-
-LEGACY        = IN_legacy (passiv)
 </pre>
 
-<h2>Module</h2>
-<div class="grid">
-  <a href="./P/index.html">IN/P – Portal</a>
-  <a href="./P/tmp.portal">TMP – Portal</a>
-  <a href="./ID.html">IN – Identität</a>
-  <a href="../IO/index.html">IO – Router</a>
-  <a href="../OI/index.html">OI – Hybrid</a>
-  <a href="../OUT/index.html">OUT – Output</a>
-  <a href="../SCAN-HUB/index.html">SCAN-HUB – Scanner</a>
-</div>
+<script>
+// --- IN empfängt Daten ---
+async function IN_RECEIVE(event){
+    const scan = JSON.parse(event);
+    IN_PROCESS(scan);
+}
+
+// --- IN verarbeitet Daten ---
+function IN_PROCESS(scan){
+    const out = document.getElementById("in_out");
+
+    out.innerHTML += "\nROT   = " + JSON.stringify(scan.rot);
+    out.innerHTML += "\nGELB  = " + JSON.stringify(scan.gelb);
+    out.innerHTML += "\nGRUEN = " + JSON.stringify(scan.gruen);
+
+    if(scan.rot) IN_ROUTE("rot", scan.rot);
+    if(scan.gelb) IN_ROUTE("gelb", scan.gelb);
+    if(scan.gruen) IN_ROUTE("gruen", scan.gruen);
+}
+
+// --- IN Routing ---
+function IN_ROUTE(level, list){
+    if(level === "rot"){
+        console.log("IN → OUT:", list);
+    } else if(level === "gelb"){
+        console.log("IN → IX:", list);
+    } else {
+        console.log("IN → UP:", list);
+    }
+}
+</script>
 
 </body>
 </html>
