@@ -1,8 +1,18 @@
-X.room.OUT:
-  ID: <BUCHSTABE>
-  SIGNATUR: <NC-ZEICHEN>
-  LAGE: <LAGE-POS>
-  PORT: OUT
-  RAW: HOLO
-  OUTPUT: HOLOGRAMM
-  MATRIX: 9x9
+<script>
+window.addEventListener("message", (event) => {
+    const d = event.data;
+    if(!d || !d.FROM || !d.TO) return;
+
+    // Visuelle Bestätigung
+    document.body.style.border = "2px solid #6cf";
+
+    // Terminal-Ausgabe
+    console.log("MSG:", d);
+
+    // Ausgabe im UI (falls vorhanden)
+    const out = document.getElementById("station_out");
+    if(out){
+        out.innerHTML += `\nFROM: ${d.FROM} → TO: ${d.TO}`;
+    }
+});
+</script>
