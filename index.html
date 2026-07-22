@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>IN · Portal</title>
+
 <style>
 body { background:#000; color:#0f0; font-family:Consolas; padding:20px; }
 h1, h2 { color:#6cf; }
@@ -17,24 +18,33 @@ a { color:#6cf; display:block; margin:10px 0; }
 <h1>IN · Portal</h1>
 
 <pre>
-CORE = IN
+CORE        = IN
+VERSION     = 2.0
+LEVEL       = rot
+STATE       = rdy
+READY       = 100%
+
 KONSTELLATION = TMP
-FREQ = 12e
-6D = D0
-360° = Startpunkt
-ACHSE = Input-Achse
-ROLLE = Eingangspunkt für IO, OI, OUT, SCAN-HUB
-STATUS = Aktiv
-READY = 100%
+FREQ          = 12e
+6D            = D0
+360°          = Startpunkt
+
+ACHSE         = Input-Achse
+ROLLE         = Eingangspunkt für IO, OI, OUT, SCAN-HUB
+
+LEGACY        = IN_legacy (passiv)
 </pre>
 
-<h2>Verbindungen</h2>
-<a href="../IO/index.html">IO – Router</a>
-<a href="../OI/index.html">OI – Hybrid</a>
-<a href="../OUT/index.html">OUT – Output</a>
-<a href="../SCAN-HUB/index.html">SCAN-HUB – Scanner</a>
-
-<div class="grid" id="grid"></div>
+<h2>Module</h2>
+<div class="grid">
+  <a href="./P/index.html">IN/P – Portal</a>
+  <a href="./P/tmp.portal">TMP – Portal</a>
+  <a href="./ID.html">IN – Identität</a>
+  <a href="../IO/index.html">IO – Router</a>
+  <a href="../OI/index.html">OI – Hybrid</a>
+  <a href="../OUT/index.html">OUT – Output</a>
+  <a href="../SCAN-HUB/index.html">SCAN-HUB – Scanner</a>
+</div>
 
 </body>
 </html>
