@@ -1,1 +1,37 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<title>IN · TMP-Portal</title>
+
+<style>
+body { background:#000; color:#0f0; font-family:Consolas; padding:20px; }
+h1 { color:#6cf; }
+pre { background:#111; border:1px solid #333; padding:12px; }
+</style>
+</head>
+
+<body>
+
+<h1>IN · TMP-Portal</h1>
+
+<pre>
+TMP.ROOT      = IN
+TMP.MODE      = Eingangskonstellation
+TMP.FREQ      = 12e
+TMP.EBENEN    = 6D
+TMP.SEQUENZ   = 360°
+TMP.STATE     = rdy
+TMP.LEVEL     = rot
+
+TMP.USE.IO    = aktiv
+TMP.USE.OI    = aktiv
+TMP.USE.OUT   = aktiv
+TMP.USE.SCAN  = aktiv
+
+LEGACY        = IN_legacy (passiv)
+</pre>
+
+</body>
+</html>
 
