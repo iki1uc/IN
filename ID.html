@@ -1,10 +1,54 @@
-NAME        = IN
-VERSION     = 2.0
-ROLE        = Eingangsschicht
-MODE        = REAL-IN
-STATE       = rdy
-LEVEL       = rot
-ROOT        = Startpunkt
-INPUT       = aktiv
-COMPATIBLE  = IO / OI / OUT / PIPE / SCAN-HUB
-LEGACY      = IN_legacy (passiv)
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>IN · Portal-ID</title>
+
+<style>
+body { background:#000; color:#0f0; font-family:monospace; text-align:center; padding:40px; }
+
+#geo {
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    border: 3px solid #6cf;
+    border-radius: 50%;
+    position: relative;
+}
+.dot {
+    width: 14px;
+    height: 14px;
+    background:#6cf;
+    border-radius:50%;
+    position:absolute;
+}
+</style>
+</head>
+
+<body>
+
+<h1>IN · Portal-ID</h1>
+<div id="geo"></div>
+
+<script>
+const geo = document.getElementById("geo");
+const count = 12;
+const radius = 90;
+
+for(let i=0; i<count; i++){
+    const dot = document.createElement("div");
+    dot.className = "dot";
+
+    const angle = (i / count) * Math.PI * 2;
+    const x = Math.cos(angle) * radius + 100 - 7;
+    const y = Math.sin(angle) * radius + 100 - 7;
+
+    dot.style.left = x + "px";
+    dot.style.top = y + "px";
+
+    geo.appendChild(dot);
+}
+</script>
+
+</body>
+</html>
