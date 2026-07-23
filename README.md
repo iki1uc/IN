@@ -1,18 +1,22 @@
-# IN · Mini-Portal (iki1uc System)
+# IN · Mini-Portal · Eingangsstation
 
-IN ist die Eingangsschicht des iki1uc-Systems.
+IN ist die kleinste Station des iki1uc-Systems.
+Sie dient als Eingang, Vorstation und Übergabepunkt.
 
-IN = D0  
-IN = ROOT  
-IN = Startpunkt  
-IN = Input-Achse  
-IN = IO-Cluster  
-IN = SCAN-HUB-Zugang  
+──────────────────────────────────────────────
+## Funktionen
 
-Alle Konstellationen = TMP  
-Alle Frequenzen = 12e  
-Alle Ebenen = 6D  
-Alle Sequenzen = 360°
+- Eingangswert empfangen
+- Wert scannen
+- Wert klassifizieren
+- Wert an nächste Station weiterleiten
 
-IN ist kompatibel mit:
-PIPE, SET, LaTER, LaTERpiFEKT, IO, OI, OUT, SCAN-HUB
+──────────────────────────────────────────────
+## Dateien
+
+- IN.core.js – Eingangsmotor
+- IN.scan.js – Erkennungsachse
+- IN.pipe.js – Übergabeachse
+- IN.result.json – Ergebnis-Pool
+- id.html – Portal-ID
+- index.html – Portal-Geometrie
