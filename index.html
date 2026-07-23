@@ -1,58 +1,81 @@
 <!DOCTYPE html>
-<html lang="de">
+<html>
 <head>
 <meta charset="UTF-8">
-<title>IN · RESPO Station</title>
+<title>IN · Mini-Portal</title>
 
 <style>
-body { background:#000; color:#0f0; font-family:Consolas; padding:20px; }
-h1 { color:#6cf; }
-pre { background:#111; border:1px solid #333; padding:12px; }
+body { background:#000; color:#0f0; font-family:monospace; padding:40px; }
+h1 { color:#6cf; text-align:center; }
+
+#portal {
+    width: 260px;
+    height: 260px;
+    margin: auto;
+    border: 3px solid #6cf;
+    border-radius: 50%;
+    position: relative;
+    animation: spin 8s linear infinite;
+}
+
+.dot {
+    width: 10px;
+    height: 10px;
+    background:#0f0;
+    border-radius:50%;
+    position:absolute;
+}
+
+pre {
+    background:#111;
+    padding:20px;
+    border-left:3px solid #6cf;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
 </style>
+
+<script src="IN.core.js"></script>
+<script src="IN.scan.js"></script>
+<script src="IN.pipe.js"></script>
+
 </head>
 
 <body>
 
-<h1>IN · RESPO Station</h1>
+<h1>IN · Mini-Portal</h1>
 
-<pre id="in_out">
-CORE        = IN
-VERSION     = 1.2
-STATE       = rdy
-LEVEL       = rot
-READY       = 100%
-</pre>
+<div id="portal"></div>
+<pre id="status">Lade IN…</pre>
 
 <script>
-// --- IN empfängt Daten ---
-async function IN_RECEIVE(event){
-    const scan = JSON.parse(event);
-    IN_PROCESS(scan);
+const portal = document.getElementById("portal");
+const count = 24;
+const radius = 120;
+
+for(let i=0; i<count; i++){
+    const dot = document.createElement("div");
+    dot.className = "dot";
+
+    const angle = (i / count) * Math.PI * 2;
+    const x = Math.cos(angle) * radius + 130 - 5;
+    const y = Math.sin(angle) * radius + 130 - 5;
+
+    dot.style.left = x + "px";
+    dot.style.top = y + "px";
+
+    portal.appendChild(dot);
 }
 
-// --- IN verarbeitet Daten ---
-function IN_PROCESS(scan){
-    const out = document.getElementById("in_out");
+IN.enter(42);
+const scan = IN_SCAN.detect(IN.input);
+const forward = IN_PIPE.forward(scan);
 
-    out.innerHTML += "\nROT   = " + JSON.stringify(scan.rot);
-    out.innerHTML += "\nGELB  = " + JSON.stringify(scan.gelb);
-    out.innerHTML += "\nGRUEN = " + JSON.stringify(scan.gruen);
-
-    if(scan.rot) IN_ROUTE("rot", scan.rot);
-    if(scan.gelb) IN_ROUTE("gelb", scan.gelb);
-    if(scan.gruen) IN_ROUTE("gruen", scan.gruen);
-}
-
-// --- IN Routing ---
-function IN_ROUTE(level, list){
-    if(level === "rot"){
-        console.log("IN → OUT:", list);
-    } else if(level === "gelb"){
-        console.log("IN → IX:", list);
-    } else {
-        console.log("IN → UP:", list);
-    }
-}
+document.getElementById("status").innerText =
+    JSON.stringify({ IN: IN.status(), scan, forward }, null, 2);
 </script>
 
 </body>
